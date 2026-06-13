@@ -1,0 +1,21 @@
+[build]
+  # Geen build nodig voor statische HTML site
+  publish = "."
+  command = "echo 'Static site, no build needed'"
+
+# Redirect regels (als je subdirectories hebt)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers voor performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/*.{js,css,svg,png,jpg,jpeg,webp}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
